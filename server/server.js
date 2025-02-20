@@ -10,6 +10,7 @@ const app = express()
 app.use(cors({
   origin: [
     'https://exponential-demo-henna.vercel.app',
+    'https://exponential-demo-qobz-pw1mow8tu-parth1614s-projects.vercel.app',
     'http://localhost:3000'
   ],
   methods: ['GET', 'POST'],
