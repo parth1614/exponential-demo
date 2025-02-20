@@ -6,7 +6,16 @@ const User = require('./models/User')
 const { calculateClick, updateUserScore } = require('./jobs/gameLogic')
 
 const app = express()
-app.use(cors())
+
+app.use(cors({
+  origin: [
+    'https://exponential-demo-henna.vercel.app',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
+}))
+
 app.use(express.json())
 
 // MongoDB Atlas connection
