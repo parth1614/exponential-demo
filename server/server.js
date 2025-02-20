@@ -9,9 +9,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// MongoDB Atlas connection with error handling
-const uri = process.env.MONGODB_URI
-mongoose.connect(uri, {
+// MongoDB Atlas connection
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverApi: {
@@ -20,8 +19,11 @@ mongoose.connect(uri, {
     deprecationErrors: true,
   }
 })
-  .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch(err => console.error('MongoDB connection error:', err))
+
+// Basic health check route
+app.get('/', (req, res) => {
+  res.json({ message: 'Server is running' })
+})
 
 app.post('/api/click', async (req, res) => {
   const { userId } = req.body
@@ -41,6 +43,5 @@ app.post('/api/user', async (req, res) => {
   res.json(user)
 })
 
-const PORT = process.env.PORT || 5001
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`)) 
+// For Vercel, we export the app instead of calling listen
+module.exports = app 
