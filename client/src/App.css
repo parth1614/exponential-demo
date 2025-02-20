@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+button {
+  padding: 20px 40px;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: #4CAF50;
+  color: white;
+  transition: transform 0.1s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+button.clicking {
+  transform: scale(0.95);
+}
