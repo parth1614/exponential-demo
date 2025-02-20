@@ -10,10 +10,10 @@ const App = () => {
     const initUser = async () => {
       const userId = localStorage.getItem('userId')
       if (userId) {
-        const { data } = await axios.get(`http://localhost:5001/api/user/${userId}`)
+        const { data } = await axios.get(`https://exponential-demo.vercel.app/api/user/${userId}`)
         setUser(data)
       } else {
-        const { data } = await axios.post('http://localhost:5001/api/user')
+        const { data } = await axios.post('https://exponential-demo.vercel.app/api/user')
         localStorage.setItem('userId', data._id)
         setUser(data)
       }
@@ -26,7 +26,7 @@ const App = () => {
     setClicking(true)
 
     try {
-      const { data } = await axios.post('http://localhost:5001/api/click', {
+      const { data } = await axios.post('https://exponential-demo.vercel.app//api/click', {
         userId: user._id
       })
 
